@@ -124,7 +124,7 @@ class DisputasController extends Controller
      */
     protected function findModel($IDDisputa)
     {
-        if (($model = Disputas::findOne($id)) !== null) {
+        if (($model = Disputas::findOne($IDDisputa)) !== null) {
             return $model;
         }
 

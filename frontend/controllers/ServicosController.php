@@ -124,7 +124,7 @@ class ServicosController extends Controller
      */
     protected function findModel($IDServico)
     {
-        if (($model = Servicos::findOne($id)) !== null) {
+        if (($model = Servicos::findOne($IDServico)) !== null) {
             return $model;
         }
 

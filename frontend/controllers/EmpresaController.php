@@ -124,7 +124,7 @@ class EmpresaController extends Controller
      */
     protected function findModel($IDEmpresa)
     {
-        if (($model = Empresa::findOne($id)) !== null) {
+        if (($model = Empresa::findOne($IDEmpresa)) !== null) {
             return $model;
         }
 
