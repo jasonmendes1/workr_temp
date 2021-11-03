@@ -124,7 +124,7 @@ class PagamentoController extends Controller
      */
     protected function findModel($IDPagamento)
     {
-        if (($model = Pagamento::findOne($id)) !== null) {
+        if (($model = Pagamento::findOne($IDPagamento)) !== null) {
             return $model;
         }
 

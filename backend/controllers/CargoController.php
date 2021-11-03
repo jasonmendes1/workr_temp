@@ -124,7 +124,7 @@ class CargoController extends Controller
      */
     protected function findModel($IDCargo)
     {
-        if (($model = Cargo::findOne($id)) !== null) {
+        if (($model = Cargo::findOne($IDCargo)) !== null) {
             return $model;
         }
 

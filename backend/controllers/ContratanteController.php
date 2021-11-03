@@ -124,7 +124,7 @@ class ContratanteController extends Controller
      */
     protected function findModel($IDContratante)
     {
-        if (($model = Contratante::findOne($id)) !== null) {
+        if (($model = Contratante::findOne($IDContratante)) !== null) {
             return $model;
         }
 

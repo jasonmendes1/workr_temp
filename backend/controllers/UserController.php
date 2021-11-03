@@ -2,16 +2,16 @@
 
 namespace backend\controllers;
 
-use backend\models\Prestador;
-use backend\models\PrestadorSearch;
+use backend\models\User;
+use backend\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PrestadorController implements the CRUD actions for Prestador model.
+ * UserController implements the CRUD actions for User model.
  */
-class PrestadorController extends Controller
+class UserController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,12 +32,12 @@ class PrestadorController extends Controller
     }
 
     /**
-     * Lists all Prestador models.
+     * Lists all User models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PrestadorSearch();
+        $searchModel = new UserSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -47,30 +47,30 @@ class PrestadorController extends Controller
     }
 
     /**
-     * Displays a single Prestador model.
-     * @param int $IDPrestador Id Prestador
+     * Displays a single User model.
+     * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($IDPrestador)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($IDPrestador),
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Prestador model.
+     * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Prestador();
+        $model = new User();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'IDPrestador' => $model->IDPrestador]);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -82,18 +82,18 @@ class PrestadorController extends Controller
     }
 
     /**
-     * Updates an existing Prestador model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $IDPrestador Id Prestador
+     * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($IDPrestador)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($IDPrestador);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'IDPrestador' => $model->IDPrestador]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -102,29 +102,29 @@ class PrestadorController extends Controller
     }
 
     /**
-     * Deletes an existing Prestador model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $IDPrestador Id Prestador
+     * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($IDPrestador)
+    public function actionDelete($id)
     {
-        $this->findModel($IDPrestador)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Prestador model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $IDPrestador Id Prestador
-     * @return Prestador the loaded model
+     * @param int $id ID
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($IDPrestador)
+    protected function findModel($id)
     {
-        if (($model = Prestador::findOne($IDPrestador)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         }
 
