@@ -14,9 +14,9 @@ class m211102_182214_init_rbac extends Migration
         $auth = Yii::$app->authManager;
 
         // adiciona a permissão "createPost"
-        $CreateEmpresa = $auth->createPermission('createEmpresa');
-        $CreateEmpresa->description = 'Criar uma empresa';
-        $auth->add($CreateEmpresa);
+        $createEmpresa = $auth->createPermission('createEmpresa');
+        $createEmpresa->description = 'Criar uma empresa';
+        $auth->add($createEmpresa);
 
         // adiciona a permissão "updatePost"
         $updateEmpresa = $auth->createPermission('updateEmpresa');
@@ -31,7 +31,7 @@ class m211102_182214_init_rbac extends Migration
         // add "author" role and give this role the "createPost" permission
         $author = $auth->createRole('author');
         $auth->add($author);
-        $auth->addChild($author, $CreateEmpresa);
+        $auth->addChild($author, $createEmpresa);
 
         // add "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
@@ -43,8 +43,11 @@ class m211102_182214_init_rbac extends Migration
         $auth->add($contratante);
         $auth->add($guest);
         $auth->add($prestador);
-        $auth->addChild($contratante, $updateEmpresa);
         $auth->addChild($admin, $author);
+        $auth->addChild($admin, $deleteEmpresa);
+        $auth->addChild($contratante, $createEmpresa);
+        $auth->addChild($contratante, $updateEmpresa);
+
 
         // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.

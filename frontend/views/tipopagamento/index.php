@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'IDTipoPagamento',
             'tipoPagamento',
-            'IDPagamento',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

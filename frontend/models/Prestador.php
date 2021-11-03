@@ -16,6 +16,7 @@ use Yii;
  * @property int $num_tele
  * @property int $IDUser
  *
+ * @property User $iDUser
  * @property Pagamento[] $pagamentos
  * @property Servicos[] $servicos
  */
@@ -39,6 +40,7 @@ class Prestador extends \yii\db\ActiveRecord
             [['sexo'], 'string'],
             [['datanascimento', 'nif', 'num_tele', 'IDUser'], 'integer'],
             [['nome', 'avatar'], 'string', 'max' => 255],
+            [['IDUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['IDUser' => 'id']],
         ];
     }
 
@@ -57,6 +59,16 @@ class Prestador extends \yii\db\ActiveRecord
             'num_tele' => 'Num Tele',
             'IDUser' => 'Id User',
         ];
+    }
+
+    /**
+     * Gets query for [[IDUser]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIDUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'IDUser']);
     }
 
     /**

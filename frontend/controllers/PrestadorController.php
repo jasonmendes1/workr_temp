@@ -124,7 +124,7 @@ class PrestadorController extends Controller
      */
     protected function findModel($IDPrestador)
     {
-        if (($model = Prestador::findOne($IDPrestador)) !== null) {
+        if (($model = Prestador::findOne($id)) !== null) {
             return $model;
         }
 

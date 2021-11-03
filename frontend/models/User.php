@@ -19,6 +19,7 @@ use Yii;
  * @property string|null $verification_token
  *
  * @property Contratante[] $contratantes
+ * @property Prestador[] $prestadors
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -73,5 +74,15 @@ class User extends \yii\db\ActiveRecord
     public function getContratantes()
     {
         return $this->hasMany(Contratante::className(), ['IDUser' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Prestadors]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPrestadors()
+    {
+        return $this->hasMany(Prestador::className(), ['IDUser' => 'id']);
     }
 }

@@ -14,8 +14,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tipoPagamento')->dropDownList([ 'Multibanco' => 'Multibanco', 'Paypal' => 'Paypal', 'MBWay' => 'MBWay', '' => '', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'IDPagamento')->textInput() ?>
-
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

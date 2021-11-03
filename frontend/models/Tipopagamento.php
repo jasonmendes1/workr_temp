@@ -9,11 +9,10 @@ use Yii;
  *
  * @property int $IDTipoPagamento
  * @property string $tipoPagamento
- * @property int $IDPagamento
  *
  * @property Pagamento[] $pagamentos
  */
-class Tipopagamento extends \yii\db\ActiveRecord
+class TipoPagamento extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -29,9 +28,8 @@ class Tipopagamento extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tipoPagamento', 'IDPagamento'], 'required'],
+            [['tipoPagamento'], 'required'],
             [['tipoPagamento'], 'string'],
-            [['IDPagamento'], 'integer'],
         ];
     }
 
@@ -43,7 +41,6 @@ class Tipopagamento extends \yii\db\ActiveRecord
         return [
             'IDTipoPagamento' => 'Id Tipo Pagamento',
             'tipoPagamento' => 'Tipo Pagamento',
-            'IDPagamento' => 'Id Pagamento',
         ];
     }
 

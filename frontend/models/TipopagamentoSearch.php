@@ -17,7 +17,7 @@ class TipopagamentoSearch extends Tipopagamento
     public function rules()
     {
         return [
-            [['IDTipoPagamento', 'IDPagamento'], 'integer'],
+            [['IDTipoPagamento'], 'integer'],
             [['tipoPagamento'], 'safe'],
         ];
     }
@@ -59,7 +59,6 @@ class TipopagamentoSearch extends Tipopagamento
         // grid filtering conditions
         $query->andFilterWhere([
             'IDTipoPagamento' => $this->IDTipoPagamento,
-            'IDPagamento' => $this->IDPagamento,
         ]);
 
         $query->andFilterWhere(['like', 'tipoPagamento', $this->tipoPagamento]);

@@ -31,7 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'IDTipoPagamento',
             'tipoPagamento',
-            'IDPagamento',
         ],
     ]) ?>
 
