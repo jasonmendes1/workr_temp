@@ -33,6 +33,11 @@ class m211102_182214_init_rbac extends Migration
         $auth->add($author);
         $auth->addChild($author, $createEmpresa);
 
+        // add "author" role and give this role the "createPost" permission
+        $author = $auth->createRole('prestador');
+        $auth->add($author);
+        $auth->addChild($author, $createEmpresa);
+
         // add "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
         $admin = $auth->createRole('admin');
@@ -47,10 +52,11 @@ class m211102_182214_init_rbac extends Migration
         $auth->addChild($admin, $deleteEmpresa);
         $auth->addChild($contratante, $createEmpresa);
         $auth->addChild($contratante, $updateEmpresa);
+        $auth->addChild($prestador, $createEmpresa);
 
 
-        // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
-        // usually implemented in your User model.
+        // Atribui roles para usuários. 1 and 2 são IDs retornados por IdentityInterface::getId()
+        // normalmente implementado no seu model User.
         $auth->assign($author, 2);
         $auth->assign($admin, 1);
     }

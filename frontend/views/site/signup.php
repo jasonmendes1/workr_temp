@@ -6,8 +6,10 @@
 
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\jui\DatePicker;
 
-$this->title = 'Signup';
+
+$this->title = 'Signup Prestador';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup">
@@ -24,6 +26,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'email') ?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
+
+                <?= $form->field($model, 'nome')->textInput() ?>
+
+                <?= $form->field($model, 'sexo')->dropDownList(['' =>'Selecionar Sexo...','Masculino' => 'Masculino', 'Feminino' => 'Feminino']) ?>
+
+                <?= $form->field($model,'datanascimento')->widget(DatePicker::className(),['dateFormat' => 'y-M-d']) ?>
+
+                <?= $form->field($model, 'num_tele')->textInput(['type' => 'text', 'maxlength' => 9]) ?>
+
+                <?= $form->field($model, 'nif')->textInput(['type' => 'text', 'maxlength' => 9]) ?>
+
+                <?= $form->field($model, 'avatar')->fileInput() ?>
 
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
