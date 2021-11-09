@@ -32,5 +32,13 @@ return [
             ],
         ],
     ],
+    'controllerMap' => [
+        'migrate' => [
+            'class' => \yii\console\controllers\MigrateController::class,
+            'migrationPath' => [
+                '@common/migrations',
+            ],
+        ],
+    ],
     'params' => $params,
 ];

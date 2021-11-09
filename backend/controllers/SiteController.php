@@ -80,14 +80,21 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
+            //if (\Yii::$app->user->can('openBackend')){
+                return $this->goBack();
+           /* }else{
+                Yii::$app->user->logout();
+                Yii::$app->session->setFlash('danger', 'Nao tem permissão para aceder a esta zona do site.');
+                return $this->goHome();
+            }*/
+        }else{
 
         $model->password = '';
 
         return $this->render('login', [
             'model' => $model,
         ]);
+    }
     }
 
     /**
