@@ -11,7 +11,7 @@ use Yii;
  * @property string $nome
  * @property string $sexo
  * @property string|null $avatar
- * @property int $datanascimento
+ * @property string $datanascimento
  * @property int $nif
  * @property int $num_tele
  * @property int $IDUser
@@ -37,9 +37,9 @@ class Prestador extends \yii\db\ActiveRecord
     {
         return [
             [['nome', 'sexo', 'datanascimento', 'nif', 'num_tele', 'IDUser'], 'required'],
-            [['sexo'], 'string'],
-            [['datanascimento', 'nif', 'num_tele', 'IDUser'], 'integer'],
-            [['nome', 'avatar'], 'string', 'max' => 255],
+            [['nif', 'num_tele', 'IDUser'], 'integer'],
+            [['nome', 'sexo', 'avatar'], 'string', 'max' => 255],
+            [['datanascimento'], 'string', 'max' => 11],
             [['IDUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['IDUser' => 'id']],
         ];
     }

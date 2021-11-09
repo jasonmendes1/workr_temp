@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'nome')->textInput() ?>
 
-                <?= $form->field($model, 'sexo')->dropDownList(['' =>'Selecionar Sexo...','Masculino' => 'Masculino', 'Feminino' => 'Feminino']) ?>
+                <?= $form->field($model, 'sexo')->dropDownList(['' =>'Selecionar Sexo...','M' => 'Masculino', 'F' => 'Feminino']) ?>
 
                 <?= $form->field($model,'datanascimento')->widget(DatePicker::className(),['dateFormat' => 'y-M-d']) ?>
 

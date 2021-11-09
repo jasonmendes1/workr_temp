@@ -1,5 +1,6 @@
 <?php
 
+use backend\models\User;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -25,12 +26,43 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
+            [
+                'label' => 'ID da Conta',
+                'attribute' => 'IDUser',
+                'value' => function ($model) {
+                    $user = User::find()->where(['id' => $model->IDPrestador])->one();
+                    return $user->id;
+                }
+            ],
             'IDContratante',
+            [
+                'label' => 'Username',
+                'attribute' => 'IDUser',
+                'value' => function ($model) {
+                    $user = User::find()->where(['id' => $model->IDPrestador])->one();
+                    return $user->username;
+                }
+            ],
             'nome',
+            [
+                'label' => 'Email',
+                'attribute' => 'IDUser',
+                'value' => function ($model) {
+                    $user = User::find()->where(['id' => $model->IDPrestador])->one();
+                    return $user->email;
+                }
+            ],
             'sexo',
             'avatar',
-            'datanascimento',
+            'datanascimento:date',
+            [
+                'label' => 'Registado em:',
+                'attribute' => 'IDUser',
+                'value' => function ($model) {
+                    $user = User::find()->where(['id' => $model->IDPrestador])->one();
+                    return $user->created_at;
+                }
+            ],
             //'IDUser',
             //'IDCargo',
             //'IDEmpresa',

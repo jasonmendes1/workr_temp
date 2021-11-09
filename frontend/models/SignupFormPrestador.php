@@ -5,6 +5,7 @@ namespace frontend\models;
 use Yii;
 use yii\base\Model;
 use common\models\User;
+use frontend\models\Prestador;
 
 /**
  * Signup form
@@ -77,10 +78,12 @@ class SignupFormPrestador extends Model
             $prestador->avatar = $avatardefaultdir . "/" . $getAvatar;
         }
 
+
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
         $user->status = 10;
+
 
         $user->save();
         $prestador->IDUser = $user->id;

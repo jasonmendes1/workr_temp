@@ -52,10 +52,10 @@ class PrestadorController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($IDPrestador)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($IDPrestador),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -70,7 +70,7 @@ class PrestadorController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'IDPrestador' => $model->IDPrestador]);
+                return $this->redirect(['view', 'id' => $model->IDPrestador]);
             }
         } else {
             $model->loadDefaultValues();
@@ -88,12 +88,12 @@ class PrestadorController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($IDPrestador)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($IDPrestador);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'IDPrestador' => $model->IDPrestador]);
+            return $this->redirect(['view', 'id' => $model->IDPrestador]);
         }
 
         return $this->render('update', [

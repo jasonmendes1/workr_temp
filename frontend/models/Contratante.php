@@ -11,7 +11,7 @@ use Yii;
  * @property string $nome
  * @property string $sexo
  * @property string|null $avatar
- * @property int $datanascimento
+ * @property string $datanascimento
  * @property int $IDUser
  * @property int $IDCargo
  * @property int $IDEmpresa
@@ -39,9 +39,9 @@ class Contratante extends \yii\db\ActiveRecord
     {
         return [
             [['nome', 'sexo', 'datanascimento', 'IDUser', 'IDCargo', 'IDEmpresa'], 'required'],
-            [['sexo'], 'string'],
-            [['datanascimento', 'IDUser', 'IDCargo', 'IDEmpresa'], 'integer'],
-            [['nome', 'avatar'], 'string', 'max' => 255],
+            [['IDUser', 'IDCargo', 'IDEmpresa'], 'integer'],
+            [['nome', 'sexo', 'avatar'], 'string', 'max' => 255],
+            [['datanascimento'], 'string', 'max' => 11],
             [['IDCargo'], 'exist', 'skipOnError' => true, 'targetClass' => Cargo::className(), 'targetAttribute' => ['IDCargo' => 'IDCargo']],
             [['IDEmpresa'], 'exist', 'skipOnError' => true, 'targetClass' => Empresa::className(), 'targetAttribute' => ['IDEmpresa' => 'IDEmpresa']],
             [['IDUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['IDUser' => 'id']],

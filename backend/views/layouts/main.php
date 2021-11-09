@@ -27,6 +27,7 @@ AppAsset::register($this);
 
 <header>
     <?php
+    $ifguest = Yii::$app->user->identity->username; //variável para ir buscar o username da pessoa logada
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
@@ -43,11 +44,34 @@ AppAsset::register($this);
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Logout (' . $ifguest . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
             . '</li>';
+        echo Nav::widget([
+                'items' => [
+                    [
+                        'label' => 'Bem Vindo ' . $ifguest,
+                        'items' => [ 
+              
+                            ['label' => 'Gerir Users', 
+                            'url' => ['user/index']],
+
+                            ['label' => 'Gerir Prestadores', 
+                            'url' => ['prestador/index']],
+                
+                             ['label' => 'Gerir Contratantes', 
+                             'url' => ['contratante/index']],
+
+                            ['label' => 'Item 4',
+                                'url' => ['#']],
+                        ],
+                    ],
+                    
+                ],
+                'options' => ['class' => 'navbar-nav navbar-right'],
+            ]);
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
