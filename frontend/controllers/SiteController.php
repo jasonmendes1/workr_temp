@@ -154,7 +154,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionSignup()
+    public function actionSignupprestador()
     {
         $model = new SignupFormPrestador();
         $getAvatar = UploadedFile::getInstance($model,'avatar');
@@ -162,7 +162,7 @@ class SiteController extends Controller
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
             return $this->goHome();
         }
-        return $this->render('signup', [
+        return $this->render('signupPrestador', [
             'model' => $model,
         ]);
     }
@@ -176,7 +176,7 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        return $this->render('signup', [
+        return $this->render('signupContratante', [
             'model' => $model,
         ]);
     }

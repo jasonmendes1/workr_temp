@@ -82,13 +82,13 @@ class SignupFormContratante extends Model
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
-        $user->status = 10;
+        $user->status = 9;
 
         $user->save();
         $contratante->IDUser = $user->id;
 
         $auth = Yii::$app->authManager;
-        $authorRole = $auth->getRole('prestador');
+        $authorRole = $auth->getRole('contratante');
         $auth->assign($authorRole, $user->getId());
         
         /*
