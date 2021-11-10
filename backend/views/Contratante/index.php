@@ -1,5 +1,8 @@
 <?php
 
+use backend\models\Cargo;
+use backend\models\Contratante;
+use backend\models\Empresa;
 use backend\models\User;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -27,19 +30,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
-                'label' => 'ID da Conta',
+                'label' => 'ID de Conta',
                 'attribute' => 'IDUser',
                 'value' => function ($model) {
-                    $user = User::find()->where(['id' => $model->IDPrestador])->one();
+                    $user = User::find()->where(['id' => $model->IDUser])->one();
                     return $user->id;
                 }
             ],
-            'IDContratante',
+            //'IDContratante',
+            [
+                'label' => 'ID de Contratante',
+                'attribute' => 'IDContratante'
+            ],
             [
                 'label' => 'Username',
                 'attribute' => 'IDUser',
                 'value' => function ($model) {
-                    $user = User::find()->where(['id' => $model->IDPrestador])->one();
+                    $user = User::find()->where(['id' => $model->IDUser])->one();
                     return $user->username;
                 }
             ],
@@ -48,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Email',
                 'attribute' => 'IDUser',
                 'value' => function ($model) {
-                    $user = User::find()->where(['id' => $model->IDPrestador])->one();
+                    $user = User::find()->where(['id' => $model->IDUser])->one();
                     return $user->email;
                 }
             ],
@@ -56,15 +63,31 @@ $this->params['breadcrumbs'][] = $this->title;
             'avatar',
             'datanascimento:date',
             [
-                'label' => 'Registado em:',
+                'label' => 'Registado em',
                 'attribute' => 'IDUser',
                 'value' => function ($model) {
-                    $user = User::find()->where(['id' => $model->IDPrestador])->one();
+                    $user = User::find()->where(['id' => $model->IDUser])->one();
                     return $user->created_at;
                 }
             ],
             //'IDUser',
             //'IDCargo',
+            [
+                'label' => 'Cargo',
+                'attribute' => 'IDCargo',
+                'value' => function ($model) {
+                    $contratante = Cargo::find()->where(['idcargo' => $model->IDCargo])->one();
+                    return $contratante->cargo;
+                }
+            ],
+            [
+                'label' => 'Empresa',
+                'attribute' => 'IDEmpresa',
+                'value' => function ($model) {
+                    $empresa = Empresa::find()->where(['idempresa' => $model->IDEmpresa])->one();
+                    return $empresa->nome;
+                }
+            ],
             //'IDEmpresa',
 
             ['class' => 'yii\grid\ActionColumn'],

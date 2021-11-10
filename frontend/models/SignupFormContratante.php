@@ -43,7 +43,7 @@ class SignupFormContratante extends Model
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
 
 
-            [['IDUser', 'nome', 'sexo', 'datanascimento', 'IDCargo', 'IDEmpresa'], 'required'],
+            [['IDUser', 'nome', 'sexo', 'datanascimento', 'IDCargo'], 'required'],
             [['IDUser', 'IDCargo', 'IDEmpresa'], 'integer'],
             [['datanascimento'], 'safe'],
             [['nome', 'sexo', 'avatar'], 'string', 'max' => 255],

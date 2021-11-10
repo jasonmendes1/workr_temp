@@ -28,19 +28,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
-                'label' => 'ID da Conta',
+                'label' => 'ID de Conta',
                 'attribute' => 'IDUser',
                 'value' => function ($model) {
-                    $user = User::find()->where(['id' => $model->IDPrestador])->one();
+                    $user = User::find()->where(['id' => $model->IDUser])->one();
                     return $user->id;
                 }
             ],
-            'IDPrestador',
+            //'IDPrestador',
+            [
+                'label' => 'ID de Prestador',
+                'attribute' => 'IDPrestador'
+            ],
             [
                 'label' => 'Username',
                 'attribute' => 'IDUser',
                 'value' => function ($model) {
-                    $user = User::find()->where(['id' => $model->IDPrestador])->one();
+                    $user = User::find()->where(['id' => $model->IDUser])->one();
                     return $user->username;
                 }
             ],
@@ -49,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Email',
                 'attribute' => 'IDUser',
                 'value' => function ($model) {
-                    $user = User::find()->where(['id' => $model->IDPrestador])->one();
+                    $user = User::find()->where(['id' => $model->IDUser])->one();
                     return $user->email;
                 }
             ],
@@ -59,10 +63,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'nif',
             'num_tele',
             [
-                'label' => 'Registado em:',
+                'label' => 'Registado em',
                 'attribute' => 'IDUser',
                 'value' => function ($model) {
-                    $user = User::find()->where(['id' => $model->IDPrestador])->one();
+                    $user = User::find()->where(['id' => $model->IDUser])->one();
                     return $user->created_at;
                 }
             ],
