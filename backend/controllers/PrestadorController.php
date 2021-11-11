@@ -4,6 +4,8 @@ namespace backend\controllers;
 
 use backend\models\Prestador;
 use backend\models\PrestadorSearch;
+use backend\models\User;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -37,12 +39,16 @@ class PrestadorController extends Controller
      */
     public function actionIndex()
     {
+        $model = new Prestador();
         $searchModel = new PrestadorSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        //$user = User::find()->where(['id' => $model->IDUser])->one();
+        $user = User::find()->where(['id' => Yii::$app->user->identity->getId()])->one();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'user' => $user,
         ]);
     }
 

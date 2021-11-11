@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Create Prestador', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= $user->id; ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); 
